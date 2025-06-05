@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Asisten Lokal - LLaMA3 via Ollama</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Asisten Lokal (LLaMA3 via Ollama)</h1>
+        <form method="post">
+            <input type="text" name="question" placeholder="Tulis pertanyaan Anda..." required autofocus>
+            <button type="submit">Tanyakan</button>
+        </form>
+        {% if status %}
+            <div class="status">{{ status }}</div>
+        {% endif %}
+
+        <div class="chat-box">
+            {% for q, a in history %}
+            <div class="chat-entry">
+                <div class="user">🧑‍💬 {{ q }}</div>
+                <div class="bot">🤖 {{ a }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
